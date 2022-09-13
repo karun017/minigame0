@@ -1,0 +1,67 @@
+import random
+#เรียงลำดับเหตุการณ์ใหม่เพิ่ม (if★)
+a=100
+b=150
+c=200
+
+random0 = [a,b,c]
+#ควรเปลี่ยน random0 เป็น hpmon
+randommon = [1,2,3]
+#อาจจะต้องใช้ if หากให้แสดงชื่อของมอนส์เตอร์
+#เช่น 1 คือชื่อของ จอมมาร เป็นต้น
+rmon = random.choice(randommon)
+hit = 0
+monu = 0
+CriticalHIT = ["N","H","SH","SSH"]
+HPmonster = random.choice(random0)
+#บรรทัด 14 อาจจะต้องแก้ไขเพิ่ม
+if rmon==1:
+    monu = random.choice(random0)
+    print("mon1 ตัว:",monu)
+if rmon==2:
+    monu = [0+random.choice(random0),0+random.choice(random0)]
+    print("mon2 ตัว:",monu)
+if rmon==3:
+    monu = [0+random.choice(random0),0+random.choice(random0),0+random.choice(random0)]
+    print("mon3 ตัว",monu)
+print("\nHP:monster::",monu)
+while HPmonster > 0:
+    Attack=25
+    
+    print("พลังปัจจุบัน",Attack)
+    choice = int(input("จงเลือก! \nAttack:กด1 \nSkill:กด2\n"))
+    
+    random1 = random.choice(CriticalHIT)
+    if choice == 1:
+        
+        if (random1=="N"):
+            Attack*=1
+            print ("normolHIT")
+        if (random1=="H"):
+            Attack*=2
+            print ("critical!!")
+        if (random1=="SH"):
+            Attack*=4
+            print ("criticalX4!!")
+        if (random1=="SSH"):
+            Attack*=8
+            print ("criticalX8!!")
+        HPmonster = HPmonster-Attack
+        
+        print("เลือดมอนสเตอร์เหลือ",HPmonster)
+    else:
+        choice1 = int(input("จงเลือกSkill! \nSkill1:กด1 \nSkill2:กด2\n"))
+        skill1 = 150
+        skill2 = 1.5
+        if choice1 ==2:
+            Attack = Attack+15*skill2
+            hit-=1
+            print("เสริมพลัง!")
+        if choice1 ==1:
+            HPmonster = HPmonster-skill1
+            print("ปาหิน")
+        print("เลือดมอนสเตอร์เหลือ:",HPmonster)
+    hit+=1
+    
+print ("มอนสเตอร์ตาย")
+print ("จำนวนครั้งที่โจมตี",hit,"ครั้ง")
